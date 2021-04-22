@@ -2,7 +2,8 @@
 logs
 *.log
 .DS_Store
-
+outputs
+uploads
 npm-debug.log*
 
 # Runtime data
