@@ -4,7 +4,7 @@
   "description": "computesvc backend on node",
   "main": "app.js",
   "scripts": {
-    "mongo:start": "docker run --name computesvc-mongo -p 27017:27017 mongo & sleep 5",
+    "mongo:start": "docker run --name computesvc-mongo -p 27017:27017 -d mongo",
     "start": "node ./app.js",
     "dev": "nodemon ./app.js",
     "test": "newman run ./tests/api-tests.postman.json -e ./tests/env-api-tests.postman.json",
