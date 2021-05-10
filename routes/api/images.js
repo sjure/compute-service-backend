@@ -2,19 +2,31 @@ var router = require('express').Router();
 var auth = require('../auth');
 const multerConfig = require("../../config/multer");
 const fs = require('fs');
+const {services} = require("../../config/services");
 const { exec } = require('child_process');
 
 
 //multerConfig.saveToUploads
-router.post('/', multerConfig.saveToUploads,(req, res) => {
+router.post('/',  auth.required,multerConfig.saveToUploads,(req, res) => {
 	return res.json("file uploaded successfully");
 });
 
-router.get('/',(req, res) => {
+router.get('/:svc',(req, res) => {
+	let svcId = req.params.svc;
+	let service = {}
+	services.forEach((svc) => {
+		if (svc.id === svcId) {
+			service = svc;
+		}
+	})
+	if (Object.keys(service).length === 0){
+		return res.status(302)
+	}
+	console.log(service)
 	if( typeof req.query.name !== 'undefined' ) {
 		console.log(req.query.name);
-		let s = `wsl.exe programs/image-seq.out ./uploads/${req.query.name} ./outputs/${req.query.name}`
-		console.log("executing :" + s)
+		let s = `wsl.exe ${service.executionString} ./uploads/${req.query.name} ./outputs/${req.query.name}`
+		console.log("executing: " + s)
 		exec(s, (err, stdout, stderr) => {
 			if (err) {
 				// node couldn't execute the command
