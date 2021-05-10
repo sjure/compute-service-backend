@@ -2,6 +2,7 @@ var router = require('express').Router();
 var auth = require('../auth');
 const multerConfig = require("../../config/multer");
 const fs = require('fs');
+const {getTokenFromHeader} = require("../auth");
 const {services} = require("../../config/services");
 const { exec } = require('child_process');
 
@@ -13,6 +14,7 @@ router.post('/',  auth.required,multerConfig.saveToUploads,(req, res) => {
 
 router.get('/:svc',auth.required,(req, res) => {
 	let svcId = req.params.svc;
+	console.log(req.payload.id)
 	let service = {}
 	services.forEach((svc) => {
 		if (svc.id === svcId) {
@@ -24,8 +26,9 @@ router.get('/:svc',auth.required,(req, res) => {
 	}
 	console.log(service)
 	if( typeof req.query.name !== 'undefined' ) {
-		console.log(req.query.name);
-		let s = `wsl.exe ${service.executionString} ./uploads/${req.query.name} ./outputs/${req.query.name}`
+		console.log();
+		let name = req.payload.id + "."+ req.query.name.split(".")[1]
+		let s = `wsl.exe ${service.executionString} ./uploads/${name} ./outputs/${name}`
 		console.log("executing: " + s)
 		exec(s, (err, stdout, stderr) => {
 			if (err) {
