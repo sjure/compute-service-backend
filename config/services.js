@@ -1,7 +1,8 @@
 var fields = require('./fields')
 const services = [
 	{
-		name: "Image Processing",
+		fullName: "Image Processing Sequential",
+		id: "img-sq",
 		path: "image-seq.out",
 		fields:[fields.image]
 	}
