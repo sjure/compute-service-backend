@@ -11,7 +11,7 @@ router.post('/',  auth.required,multerConfig.saveToUploads,(req, res) => {
 	return res.json("file uploaded successfully");
 });
 
-router.get('/:svc',(req, res) => {
+router.get('/:svc',auth.required,(req, res) => {
 	let svcId = req.params.svc;
 	let service = {}
 	services.forEach((svc) => {
