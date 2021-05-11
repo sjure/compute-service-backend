@@ -3,5 +3,23 @@
 		"id": "img-mpi",
 		"path": "parmpi.out",
 		"executionString": "wsl.exe mpirun -np 8 programs/parmpi.out",
-		"fields":["image"]
+	"fileOutput": true,
+	"fields": {
+		"0": {
+			"type": "file",
+			"format": "png",
+			"input": true,
+			"name": "input-file",
+			"fullName": "Input file png",
+			"flag": null
+		},
+		"1": {
+			"type": "file",
+			"format": "png",
+			"input": false,
+			"name": "output-file",
+			"fullName": "Output file png",
+			"flag": null
+		}
+	}
 }

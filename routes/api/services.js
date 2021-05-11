@@ -25,10 +25,10 @@ router.get('/service/:svc', auth.required,async function(req, res, next){
 	services.forEach((svc) => {
 		if (svc.id === svcId) {
 			found =true
-			return res.status(200).json(svc).send()
+			return res.status(200).json(svc)
 		}
 	})
-	if (!found) return res.status(302).send()
+	if (!found) return res.status(302)
 });
 
 

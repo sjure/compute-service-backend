@@ -2,6 +2,32 @@
 		"fullName": "Scatterplot of data",
 		"id": "scatterpy",
 		"path": "scatterplot.py",
-		"fields":["csv","column"],
-		"executionString":  "wsl.exe /home/sjur/pyvenv/venv/bin/python3"
+		"executionString":  "wsl.exe /home/sjur/pyvenv/venv/bin/python3",
+		"fileOutput": true,
+		"fields": {
+			"0": {
+				"type": "file",
+				"format": "csv",
+				"input": true,
+				"name": "input-file",
+				"fullName": "Input file csv",
+				"flag": "-i"
+			},
+			"1": {
+				"type": "file",
+				"format": "png",
+				"input": false,
+				"name": "output",
+				"fullName": "Output of program",
+				"flag": "-o"
+			},
+			"2": {
+				"type": "text",
+				"format": "text",
+				"input": true,
+				"name": "row-name",
+				"fullName": "Row to display",
+				"flag": "-var"
+			}
+		}
 }

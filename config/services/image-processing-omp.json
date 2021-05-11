@@ -3,5 +3,23 @@
 		"id": "img-omp",
 		"path":  "cp2.out",
 		"executionString": "wsl.exe programs/cp2.out",
-		"fields":["image"]
+		"fileOutput": true,
+		"fields": {
+				"0": {
+					"type": "file",
+					"format": "png",
+					"input": true,
+					"name": "input-file",
+					"fullName": "Input file png",
+					"flag": null
+				},
+				"1": {
+					"type": "file",
+					"format": "png",
+					"input": false,
+					"name": "output-file",
+					"fullName": "Output file png",
+					"flag": null
+				}
+		}
 }

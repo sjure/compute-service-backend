@@ -28,10 +28,29 @@ router.get('/:svc',auth.required,async (req, res) => {
 	console.log(service)
 	if( typeof req.query.name !== 'undefined' ) {
 		console.log();
-		let name = req.payload.id + "."+ req.query.name.split(".")[1]
-		let s = `${service.executionString} ./uploads/${name} ./outputs/${name}`
-		console.log("executing: " + s)
-		exec(s, (err, stdout, stderr) => {
+		let execString = `${service.executionString}`
+		Object.values(service.fields).forEach(value => {
+			if (value.type === "file") {
+				let name = req.payload.id + "."+ req.query.name.split(".")[1]
+				if (value.input) {
+					if (value.flag) {
+						execString += ` ${value.flag} ./uploads/${name}`
+					} else {
+						execString += ` ./uploads/${name}`
+					}
+				} else {
+					if (value.flag) {
+						execString += ` ${value.flag} ./uploads/${name}`
+					} else {
+						execString += ` ./uploads/${name}`
+					}
+				}
+			} else if (value.type === "text") {
+				execString += ` ${value.flag} ${req.query[value.name]}`
+			}
+		})
+		console.log("executing: " + execString)
+		exec(execString, (err, stdout, stderr) => {
 			if (err) {
 				// node couldn't execute the command
 				return;
@@ -39,16 +58,8 @@ router.get('/:svc',auth.required,async (req, res) => {
 			// the *entire* stdout and stderr (buffered)
 			console.log(`stdout: ${stdout}`);
 			console.log(`stderr: ${stderr}`);
-			var file = `${process.cwd()}/outputs/${req.query.name}`
-			var s = fs.createReadStream(file);
-			s.on('open', function () {
-				res.set('Content-Type', null);
-				s.pipe(res);
-			});
-			s.on('error', function () {
-				res.set('Content-Type', 'text/plain');
-				res.status(404).end('Not found');
-			});
+			let file = `${process.cwd()}/outputs/${req.query.name}`
+			res.sendFile(file);
 		});
 	} else {
 		console.error("undefined name");
