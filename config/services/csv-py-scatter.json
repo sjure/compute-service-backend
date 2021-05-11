@@ -1,0 +1,7 @@
+{
+		"fullName": "Scatterplot of data",
+		"id": "scatterpy",
+		"path": "scatterplot.py",
+		"fields":["csv","column"],
+		"executionString":  "wsl.exe /home/sjur/pyvenv/venv/bin/python3"
+}
