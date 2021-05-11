@@ -1,0 +1,7 @@
+{
+		"fullName": "Image Processing MPI 8 processes",
+		"id": "img-mpi",
+		"path": "parmpi.out",
+		"executionString": "mpirun -np 8 programs/parmpi.out",
+		"fields":["image"]
+}

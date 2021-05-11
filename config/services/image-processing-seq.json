@@ -1,0 +1,7 @@
+{
+		"fullName": "Image Processing Sequential",
+		"id": "img-sq",
+		"path": "image-seq.out",
+		"executionString": "programs/image-seq.out",
+		"fields":["image"]
+}

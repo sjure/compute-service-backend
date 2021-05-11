@@ -2,7 +2,6 @@ var router = require('express').Router();
 var auth = require('../auth');
 const multerConfig = require("../../config/multer");
 const fs = require('fs');
-const {getTokenFromHeader} = require("../auth");
 const {services} = require("../../config/services");
 const { exec } = require('child_process');
 

@@ -1,0 +1,7 @@
+{
+		"fullName": "Image Processing OMP max processors",
+		"id": "img-omp",
+		"path":  "cp2.out",
+		"executionString": "programs/cp2.out",
+		"fields":["image"]
+}
