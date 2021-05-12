@@ -1,9 +1,8 @@
 var router = require('express').Router();
 var auth = require('../auth');
-var services = require('../../config/services')
 const readFiles = require("../readFiles");
 
-router.get('/', function (req, res) {
+router.get('/',  auth.required,function (req, res) {
 	let path = `${process.cwd()}/config/services`
 	console.log(path)
 	readFiles(path).then(files=> {

@@ -3,15 +3,15 @@ var auth = require('../auth');
 const multerConfig = require("../../config/multer");
 const fs = require('fs');
 const readFiles = require("../readFiles");
-const { exec } = require('child_process');
+const {exec} = require('child_process');
 
 
 //multerConfig.saveToUploads
-router.post('/',  auth.required,multerConfig.saveToUploads,(req, res) => {
+router.post('/', auth.required, multerConfig.saveToUploads, (req, res) => {
 	return res.json("file uploaded successfully");
 });
 
-router.get('/:svc',auth.required,async (req, res) => {
+router.get('/:svc', auth.required, async (req, res) => {
 	let svcId = req.params.svc;
 	console.log(req.payload.id)
 	let service = {}
@@ -22,16 +22,16 @@ router.get('/:svc',auth.required,async (req, res) => {
 			service = svc;
 		}
 	})
-	if (Object.keys(service).length === 0){
+	if (Object.keys(service).length === 0) {
 		return res.status(302)
 	}
 	console.log(service)
-	if( typeof req.query.name !== 'undefined' ) {
+	if (true) {
 		console.log();
 		let execString = `${service.executionString}`
 		Object.values(service.fields).forEach(value => {
 			if (value.type === "file") {
-				let name = req.payload.id + "."+ req.query.name.split(".")[1]
+				let name = req.payload.id + "." + value.format
 				if (value.input) {
 					if (value.flag) {
 						execString += ` ${value.flag} ./uploads/${name}`
@@ -40,9 +40,9 @@ router.get('/:svc',auth.required,async (req, res) => {
 					}
 				} else {
 					if (value.flag) {
-						execString += ` ${value.flag} ./uploads/${name}`
+						execString += ` ${value.flag} ./outputs/${name}`
 					} else {
-						execString += ` ./uploads/${name}`
+						execString += ` ./outputs/${name}`
 					}
 				}
 			} else if (value.type === "text") {
@@ -58,8 +58,21 @@ router.get('/:svc',auth.required,async (req, res) => {
 			// the *entire* stdout and stderr (buffered)
 			console.log(`stdout: ${stdout}`);
 			console.log(`stderr: ${stderr}`);
-			let file = `${process.cwd()}/outputs/${req.query.name}`
-			res.sendFile(file);
+
+			console.log(service.fileOutput)
+			if (service.fileOutput) {
+				let outputFiles = Object.values(service.fields).filter(x => x.type === "file" && !x.input)
+				if (outputFiles.length !== 1) {
+					res.status(500)
+					return;
+				}
+				let name = req.payload.id + "." + outputFiles[0].format
+				let file = `${process.cwd()}/outputs/${name}`
+				res.status(200).sendFile(file);
+			} else {
+				res.status(200).json(stdout);
+			}
+
 		});
 	} else {
 		console.error("undefined name");

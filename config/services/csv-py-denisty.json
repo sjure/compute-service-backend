@@ -1,8 +1,8 @@
 {
-		"fullName": "Scatterplot of data",
-		"id": "scatterpy",
-		"path": "scatterplot.py",
-		"executionString":  "wsl.exe /home/sjur/pyvenv/venv/bin/python3 ./programs/scatterplot.py",
+		"fullName": "Densityplot of data",
+		"id": "densitypy",
+		"path": "density.py",
+		"executionString":  "wsl.exe /home/sjur/pyvenv/venv/bin/python3 ./programs/density.py",
 		"fileOutput": true,
 		"fields": {
 			"0": {

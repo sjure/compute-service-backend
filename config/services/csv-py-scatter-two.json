@@ -1,8 +1,8 @@
 {
-		"fullName": "Scatterplot of data",
-		"id": "scatterpy",
-		"path": "scatterplot.py",
-		"executionString":  "wsl.exe /home/sjur/pyvenv/venv/bin/python3 ./programs/scatterplot.py",
+		"fullName": "Scatterplot of two columns of data",
+		"id": "scatterpytwo",
+		"path": "scatter-two.py",
+		"executionString":  "wsl.exe /home/sjur/pyvenv/venv/bin/python3 ./programs/scatter-two.py",
 		"fileOutput": true,
 		"fields": {
 			"0": {
@@ -28,6 +28,14 @@
 				"name": "row-name",
 				"fullName": "Row to display",
 				"flag": "-var"
+			},
+			"3": {
+				"type": "text",
+				"format": "text",
+				"input": true,
+				"name": "row-name2",
+				"fullName": "Second row to display",
+				"flag": "-var2"
 			}
 		}
 }

@@ -1,8 +1,8 @@
 {
-		"fullName": "Scatterplot of data",
-		"id": "scatterpy",
-		"path": "scatterplot.py",
-		"executionString":  "wsl.exe /home/sjur/pyvenv/venv/bin/python3 ./programs/scatterplot.py",
+		"fullName": "Histogram of data",
+		"id": "histopy",
+		"path": "histogram.py",
+		"executionString":  "wsl.exe /home/sjur/pyvenv/venv/bin/python3 ./programs/histogram.py",
 		"fileOutput": true,
 		"fields": {
 			"0": {
