@@ -1,0 +1,33 @@
+{
+		"fullName": "Get best classifier",
+		"id": "classComp",
+		"path": "classification_compair.py",
+		"executionString":  "wsl.exe /home/sjur/pyvenv/venv/bin/python3 ./programs/classification_compair.py",
+		"fileOutput": true,
+		"fields": {
+			"0": {
+				"type": "file",
+				"format": "csv",
+				"input": true,
+				"name": "input-file",
+				"fullName": "Input file csv",
+				"flag": "-i"
+			},
+			"1": {
+				"type": "file",
+				"format": "png",
+				"input": false,
+				"name": "output",
+				"fullName": "Output of program",
+				"flag": "-o"
+			},
+			"2": {
+				"type": "text",
+				"format": "text",
+				"input": true,
+				"name": "col-name",
+				"fullName": "Column to classify on",
+				"flag": "-var"
+			}
+		}
+}
