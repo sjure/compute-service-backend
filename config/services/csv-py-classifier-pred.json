@@ -4,7 +4,7 @@
 		"id": "classPred",
 		"path": "classification_pred.py",
 		"executionString":  "wsl.exe /home/sjur/pyvenv/venv/bin/python3 ./programs/classification_pred.py",
-		"fileOutput": true,
+		"fileOutput": false,
 		"fields": {
 			"0": {
 				"type": "file",
