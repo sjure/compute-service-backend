@@ -1,5 +1,6 @@
 {
 		"fullName": "Get best classifier",
+		"desc":"Test your dataset against the predifined models to see the best classifier",
 		"id": "classComp",
 		"path": "classification_compair.py",
 		"executionString":  "wsl.exe /home/sjur/pyvenv/venv/bin/python3 ./programs/classification_compair.py",

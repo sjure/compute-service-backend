@@ -1,0 +1,42 @@
+{
+		"fullName": "Get you classification",
+		"desc":"Choose you classifier from the available: \nlr:LogisticRegression,\ngnb:GaussianNB,\nsvc:LinearSVC,\nsvcG:SVCgammarfc:RandomForestClassifier,\ngc:GaussianProcessClassifier,\ndt:DecisionTreeClassifier,\nmpl:MLPClassifier,\nab:AdaBoostClassifier,\nqa:QuadraticDiscriminantAnalysis",
+		"id": "classPred",
+		"path": "classification_pred.py",
+		"executionString":  "wsl.exe /home/sjur/pyvenv/venv/bin/python3 ./programs/classification_pred.py",
+		"fileOutput": true,
+		"fields": {
+			"0": {
+				"type": "file",
+				"format": "csv",
+				"input": true,
+				"name": "input-file",
+				"fullName": "Input file csv",
+				"flag": "-i"
+			},
+			"2": {
+				"type": "text",
+				"format": "text",
+				"input": true,
+				"name": "col-name",
+				"fullName": "Column to classify on",
+				"flag": "-col"
+			},
+			"3": {
+				"type": "text",
+				"format": "text",
+				"input": true,
+				"name": "classifier",
+				"fullName": "The selected classifier",
+				"flag": "-cls"
+			},
+			"4": {
+				"type": "text",
+				"format": "text",
+				"input": true,
+				"name": "row",
+				"fullName": "Name of the row to classify",
+				"flag": "-var"
+			}
+		}
+}
