@@ -1,0 +1,34 @@
+{
+		"fullName": "Get you regression on random forrest",
+		"desc":"Using the random forest regressor to tell you the result",
+		"id": "regressPredict",
+		"path": "regression_pred.py",
+		"executionString":  "wsl.exe /home/sjur/pyvenv/venv/bin/python3 ./programs/regression_pred.py",
+		"fileOutput": false,
+		"fields": {
+			"0": {
+				"type": "file",
+				"format": "csv",
+				"input": true,
+				"name": "input-file",
+				"fullName": "Input file csv",
+				"flag": "-i"
+			},
+			"2": {
+				"type": "text",
+				"format": "text",
+				"input": true,
+				"name": "col-name",
+				"fullName": "Column to classify on",
+				"flag": "-col"
+			},
+			"4": {
+				"type": "text",
+				"format": "text",
+				"input": true,
+				"name": "row",
+				"fullName": "Name of the row to classify",
+				"flag": "-var"
+			}
+		}
+}

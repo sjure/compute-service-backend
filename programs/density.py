@@ -246,7 +246,7 @@ class MakeScatterTwo(Strategy):
 class MakeDensityCurve(Strategy):
     def do_algorithm(self, values: pd.DataFrame,tic:str) -> None:
         data = values.copy()
-        data.index = pd.to_datetime(data.index, format = '%Y-%m-%d')
+        #data.index = pd.to_datetime(data.index, format = '%Y-%m-%d')
         return sns.distplot(data, hist=True, kde=True,
              bins=int(180/5), color = 'darkblue',
              hist_kws={'edgecolor':'black'},
